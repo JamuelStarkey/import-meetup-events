@@ -85,7 +85,7 @@ class Import_Meetup_Events_EM {
 			$endtimel   = isset( $centralize_array['endtime_local'] ) ? $centralize_array['endtime_local'] : '';
 			$series_id  = $generatedt . $starttimel . $endtimel;
 		}
-		$is_exitsing_event = $ime_events->common->get_event_by_event_id( $this->event_posttype, $centralize_array['ID'], $series_id );
+		$is_existing_event = $ime_events->common->get_event_by_event_id( $this->event_posttype, $centralize_array['ID'], $series_id );
 				
 		if ( $is_existing_event ) {
 			// Update event or not?
@@ -148,7 +148,7 @@ class Import_Meetup_Events_EM {
 			//Event ID
 			update_post_meta( $inserted_event_id, 'ime_event_id', $centralize_array['ID'] );
 
-			// Asign event category.
+			// Assign event category.
 			$ime_cats = isset( $event_args['event_cats'] ) ? $event_args['event_cats'] : array();
 			if ( ! empty( $ime_cats ) ) {
 				foreach ( $ime_cats as $ime_catk => $ime_catv ) {
